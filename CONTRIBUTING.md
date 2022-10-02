@@ -39,7 +39,7 @@ Now that our new branch is created, we will switch over to it using the git chec
 $ git checkout new-branch
 Switched to branch 'new-branch'
 ````
-## Make changes on your Machine
+### 4. Make changes on your Machine
 Now make the required changes as you think.
 
 Once you have modified existing files or added new files to the project, you can add them to your local repository, which you can do with the git add command. 

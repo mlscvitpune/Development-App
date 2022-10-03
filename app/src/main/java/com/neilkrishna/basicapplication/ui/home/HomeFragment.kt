@@ -29,11 +29,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        var count = 0
         binding.increment.setOnClickListener { view1 ->
-            Snackbar.make(view1, "Replace with your own action to Increment Counter", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-
+            count = count +1
+            binding.counter.setText(count.toString())
         }
+
 
         binding.addPeople.setOnClickListener { view2 ->
             Snackbar.make(view2, "Replace with your own action to add person", Snackbar.LENGTH_LONG)

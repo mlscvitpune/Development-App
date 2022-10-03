@@ -1,5 +1,5 @@
 package com.neilkrishna.basicapplication
-
+//Basic app creation
 import android.os.Bundle
 import android.view.Menu
 import android.widget.Toast
@@ -68,6 +68,11 @@ class MainActivity : AppCompatActivity() {
 //        toolbar.setNavigationOnClickListener{
 //            drawerLayout.open()
 //        }
+        // toolbar.setNavigationOnClickListener{
+        //       drawerLayout.open()
+        // delay(50)
+        //drawerLayout.close()
+        //        }
         sideNavView.setNavigationItemSelectedListener{
             when(it.itemId){
                 R.id.nav_signIn -> {

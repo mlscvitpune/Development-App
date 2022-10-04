@@ -2,18 +2,19 @@
 
 ## Description
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
-Please add a screen shot/gif showing the change you made.
-Fixes # (issue)
+Added Google sign in and signout.Also the nav header image,text and email is updated with google account.
+Dependencies:
+implementation 'com.google.android.gms:play-services-auth:20.3.0'
+implementation 'com.github.bumptech.glide:glide:4.11.0'
+annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+![image](https://user-images.githubusercontent.com/75023893/193781565-f0727a7b-750c-406a-bd3d-ad550bd1345c.png)
+
 
 ## Type of change
 
 Please delete options that are not relevant.
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
 
 ## Checklist:
 

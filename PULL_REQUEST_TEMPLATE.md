@@ -3,10 +3,10 @@
 ## Description
 
 Added Google sign in and signout.Also the nav header image,text and email is updated with google account.
-Dependencies:
-implementation 'com.google.android.gms:play-services-auth:20.3.0'
-implementation 'com.github.bumptech.glide:glide:4.11.0'
-annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+-Dependencies:
+-implementation 'com.google.android.gms:play-services-auth:20.3.0'
+-implementation 'com.github.bumptech.glide:glide:4.11.0'
+-annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 ![image](https://user-images.githubusercontent.com/75023893/193781565-f0727a7b-750c-406a-bd3d-ad550bd1345c.png)
 
 

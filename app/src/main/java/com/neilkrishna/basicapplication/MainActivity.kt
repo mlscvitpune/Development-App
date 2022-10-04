@@ -1,5 +1,6 @@
 package com.neilkrishna.basicapplication
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -26,7 +28,6 @@ import com.google.android.material.navigation.NavigationView
 import com.neilkrishna.basicapplication.databinding.ActivityMainBinding
 
 
-const val RC_SIGN_IN = 123
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -99,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
                     }else{
                         val signInIntent = mGoogleSignInClient.signInIntent
-                        startActivityForResult(signInIntent, RC_SIGN_IN)
+                        resultLauncher.launch(signInIntent)
 
                     }
 
@@ -109,6 +110,9 @@ class MainActivity : AppCompatActivity() {
                     // Implementation for Sign-out Click
                     mGoogleSignInClient.signOut()
                         .addOnCompleteListener(this) {
+                            textViewName.setText("Android Studio")
+                            textViewEmail.setText("android.studio@android.com")
+                            imgview.setImageResource(R.mipmap.ic_launcher_round)
                             Toast.makeText(this, "Sign out Successful", Toast.LENGTH_SHORT).show()
                         }
                 }
@@ -128,17 +132,14 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
+    var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
         }
     }
+
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
 
@@ -171,6 +172,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
 
 
 

@@ -26,13 +26,17 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+
+    var num=0;
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.increment.setOnClickListener { view1 ->
-            Snackbar.make(view1, "Replace with your own action to Increment Counter", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-
+            //The counter is being incremented by 1 each time it is pressed and the result is displayed.
+            num+=1;
+            binding.counter.text=num.toString();
+            
         }
 
         binding.addPeople.setOnClickListener { view2 ->

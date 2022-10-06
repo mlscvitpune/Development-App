@@ -53,11 +53,12 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigation: BottomNavigationView =  binding.appBarMain.contentMain.bottomNavView
         val controller = findNavController(R.id.nav_host_fragment_container)
+        val drawerLayout: DrawerLayout = binding.drawerLayout
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_people, R.id.navigation_profile
-            )
+            ),drawerLayout
         )
 
         setupActionBarWithNavController(controller, appBarConfiguration)
@@ -73,7 +74,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        val drawerLayout: DrawerLayout = binding.drawerLayout
         val sideNavView: NavigationView = binding.navView
         val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar,  R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)

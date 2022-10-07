@@ -1,5 +1,6 @@
 package com.neilkrishna.basicapplication.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import com.neilkrishna.basicapplication.AddPeopleInfoActivity
 import com.neilkrishna.basicapplication.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -44,9 +46,9 @@ class HomeFragment : Fragment() {
             viewModel.increaseCountByOne()
         }
 
-        binding.addPeople.setOnClickListener { view2 ->
-            Snackbar.make(view2, "Replace with your own action to add person", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        binding.addPeople.setOnClickListener {
+            val intent = Intent( this@HomeFragment.requireContext(), AddPeopleInfoActivity::class.java )
+            startActivity(intent)
         }
     }
 

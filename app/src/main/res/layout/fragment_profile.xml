@@ -4,20 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1A3760"
     tools:context=".ui.profile.ProfileFragment">
 
-    <TextView
-        android:id="@+id/text_slideshow"
-        android:layout_width="match_parent"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/to_be_implemented"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_man"
+        app:civ_border_color="#D9D9D9"
+        app:civ_border_width="10dp"
+        app:layout_constraintBottom_toTopOf="@id/profile_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Guest User"
+        android:textColor="#92EAFF"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:background="#FE7575"
+        app:layout_constraintEnd_toEndOf="@id/profile_name"
+        app:layout_constraintStart_toStartOf="@id/profile_name"
+        app:layout_constraintTop_toBottomOf="@id/profile_name" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/email_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:cardBackgroundColor="#D9D9D9"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="@id/profile_name"
+        app:layout_constraintStart_toStartOf="@id/profile_name"
+        app:layout_constraintTop_toBottomOf="@id/view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/mail_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_email"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="2dp"
+                android:letterSpacing="0.2"
+                android:text="guestuser@gmail.com"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/mail_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/mail_icon"
+                app:layout_constraintTop_toTopOf="@id/mail_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

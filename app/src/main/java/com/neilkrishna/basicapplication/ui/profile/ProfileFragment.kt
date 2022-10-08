@@ -1,11 +1,15 @@
 package com.neilkrishna.basicapplication.ui.profile
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.neilkrishna.basicapplication.databinding.FragmentProfileBinding
+
 
 class ProfileFragment : Fragment() {
 
@@ -23,6 +27,17 @@ class ProfileFragment : Fragment() {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val account = GoogleSignIn.getLastSignedInAccount(requireActivity())
+        if (account != null) {
+            Glide.with(this).load(account.photoUrl).into(binding.profileImage)
+            binding.profileName.text = account.displayName
+            binding.userEmail.text = account.email
+        }
     }
 
     override fun onDestroyView() {

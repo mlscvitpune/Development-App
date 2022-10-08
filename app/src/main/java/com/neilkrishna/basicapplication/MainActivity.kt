@@ -88,29 +88,24 @@ class MainActivity : AppCompatActivity() {
         imgview = hView.findViewById(R.id.imageView) as ImageView
 
 
-        sideNavView.setNavigationItemSelectedListener{
-            when(it.itemId){
+        sideNavView.setNavigationItemSelectedListener {
+            when (it.itemId) {
                 R.id.nav_signIn -> {
                     // Implementation for Sign-In Click
                     val account = GoogleSignIn.getLastSignedInAccount(this)
-                    if (account!=null)
-                    {
+                    if (account != null)
                         Toast.makeText(this, "Already Signed in", Toast.LENGTH_SHORT).show()
-
-                    }else{
+                    else {
                         val signInIntent = mGoogleSignInClient.signInIntent
                         resultLauncher.launch(signInIntent)
-
                     }
-
-
                 }
                 R.id.nav_signOut -> {
                     // Implementation for Sign-out Click
                     mGoogleSignInClient.signOut()
                         .addOnCompleteListener(this) {
-                            textViewName.setText("Android Studio")
-                            textViewEmail.setText("android.studio@android.com")
+                            textViewName.text = "Android Studio"
+                            textViewEmail.text = "android.studio@android.com"
                             imgview.setImageResource(R.mipmap.ic_launcher_round)
                             Toast.makeText(this, "Sign out Successful", Toast.LENGTH_SHORT).show()
                         }
@@ -131,45 +126,42 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                val task: Task<GoogleSignInAccount> =
+                    GoogleSignIn.getSignedInAccountFromIntent(data)
+                handleSignInResult(task)
+            }
         }
-    }
-
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-
-        val account = completedTask.getResult(ApiException::class.java)
-
-        // Signed in successfully
-        textViewName.setText(account.displayName)
-        textViewEmail.setText(account.email)
-        //Picasso.get().load(account.photoUrl).into(imgview)
-        Glide.with(this).load(account.photoUrl).into(imgview)
-
-
+        try {
+            val account = completedTask.getResult(ApiException::class.java)
+            Toast.makeText(this, "Log-In Successful", Toast.LENGTH_SHORT).show()
+            // Signed in successfully
+            textViewName.text = account.displayName
+            textViewEmail.text = account.email
+            Glide.with(this).load(account.photoUrl).placeholder(R.drawable.ic_man).into(imgview)
+        } catch (e: ApiException) {
+            Log.d("MAIN", "signInResult:failed code=" + e.statusCode)
+        }
     }
 
     override fun onStart() {
         super.onStart()
         val account = GoogleSignIn.getLastSignedInAccount(this)
         if (account != null) {
-            textViewName.setText(account.displayName)
+            textViewName.text = account.displayName
         }
         if (account != null) {
-            textViewEmail.setText(account.email)
+            textViewEmail.text = account.email
         }
         if (account != null) {
-            //Picasso.get().load(account.photoUrl).into(imgview)
             Glide.with(this).load(account.photoUrl).into(imgview)
         }
-
-
     }
-
 }
 
 

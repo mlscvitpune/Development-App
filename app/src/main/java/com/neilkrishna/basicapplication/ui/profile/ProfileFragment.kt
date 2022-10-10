@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.neilkrishna.basicapplication.R
 import com.neilkrishna.basicapplication.databinding.FragmentProfileBinding
 
 
@@ -34,7 +35,7 @@ class ProfileFragment : Fragment() {
 
         val account = GoogleSignIn.getLastSignedInAccount(requireActivity())
         if (account != null) {
-            Glide.with(this).load(account.photoUrl).into(binding.profileImage)
+            Glide.with(this).load(account.photoUrl).placeholder(R.drawable.ic_man).into(binding.profileImage)
             binding.profileName.text = account.displayName
             binding.userEmail.text = account.email
         }

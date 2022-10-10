@@ -77,7 +77,7 @@
                 android:layout_marginBottom="2dp"
                 android:letterSpacing="0.2"
                 android:text="guestuser@gmail.com"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="@id/mail_icon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/mail_icon"

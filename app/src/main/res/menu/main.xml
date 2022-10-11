@@ -4,6 +4,6 @@
     <item
         android:id="@+id/about"
         android:orderInCategory="100"
-        android:title="TO BO IMPLEMENTED (About page)"
+        android:title="About Page"
         app:showAsAction="never" />
 </menu>

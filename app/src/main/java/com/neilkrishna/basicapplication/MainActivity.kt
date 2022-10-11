@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         toolbar.setOnMenuItemClickListener{
             when(it.itemId){
                 // Implementation for about page
-                R.id.about -> Toast.makeText(this, "To be implemented", Toast.LENGTH_SHORT).show()
+                R.id.about -> startActivity(Intent(this, AboutPage::class.java))
             }
             true
         }

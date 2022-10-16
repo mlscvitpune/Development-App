@@ -15,5 +15,10 @@
         android:id="@+id/navigation_profile"
         android:icon="@drawable/profile_icon"
         android:title="@string/profile" />
+    
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/ic_baseline_refresh_24"
+        android:title="refresh"/>
 
 </menu>
